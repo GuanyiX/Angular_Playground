@@ -1,1 +1,19 @@
-<button mat-flat-button color="primary" (click)="handleHomeClick()">Home</button>
+<form style="height: 100vh" [formGroup]="loginForm">
+    <div fxLayoutAlign="center center" fxFill>
+        <p-card fxFlex="30">
+            <div>
+                <label for="username" fxFlex="30">Email</label>
+                <input id="username" type="text" fxFlex="70" pInputText formControlName="email">
+            </div>
+            <div style="margin-top: 30px">
+                <label for="password" fxFlex="30">Password</label>
+                <input id="password" type="password" fxFlex="70" pInputText formControlName="password">
+            </div>
+            <div>
+                <button pButton (click)="handleHomeClick()" style="margin-top: 30px" fxFlex="auto" [disabled]="loginForm.invalid">
+                    <span fxFill>Login</span>
+                </button>
+            </div>
+        </p-card>
+    </div>
+</form>

@@ -8,20 +8,17 @@ import { filter } from 'rxjs/operators';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, IDeactivateComponent {
-  constructor(private router: Router) {}
+export class HomeComponent implements OnInit {
+  // click_count = 0;
+  // pages_number = 2;
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  @HostListener('window:beforeunload', ['$event'])
-  beforeUnloadHandler() {
-    return false;
-  }
-
-  handleClick() {
-    this.router.navigate(['/login']);
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // beforeUnloadHandler() {
+  //   return false;
+  // }
 
   canExit(): boolean {
     if (confirm('Do you wish to Please confirm')) {
@@ -31,5 +28,13 @@ export class HomeComponent implements OnInit, IDeactivateComponent {
     }
   }
 
+  // handleClickNext() {
+  //   this.click_count = Math.abs((this.click_count + 1) % this.pages_number);
+  //   console.log(this.click_count);
+  // }
 
+  // handleClickPrev() {
+  //   this.click_count = Math.abs((this.click_count - 1) % this.pages_number);
+  //   console.log(this.click_count);
+  // }
 }

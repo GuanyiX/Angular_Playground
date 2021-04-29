@@ -1,0 +1,64 @@
+<div>
+    <ng-container class="login-container">
+        <mat-form-field appearance="outline" style="margin: 40px 20px">
+            <mat-label>Input</mat-label>
+            <input matInput [(ngModel)]="value">
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit" (click)="handleSaveClick()">
+            Save
+        </button>
+    </ng-container>
+</div>
+
+<div style="margin-top: 30px">
+    <div style="margin: 30px 0 0 20px">
+        <mat-form-field appearance="outline">
+            <mat-label>BehaviorSubject</mat-label>
+            <input matInput [(ngModel)]="behaviorResult" disabled />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 20px">
+            <mat-label>AsyncSubject</mat-label>
+            <input matInput [(ngModel)]="asyncResult" disabled />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 20px">
+            <mat-label>ReplaySubject</mat-label>
+            <input matInput [(ngModel)]="replayResult" disabled />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="margin-left: 20px">
+            <mat-label>Subject</mat-label>
+            <input matInput [(ngModel)]="subjectResult" disabled />
+        </mat-form-field>
+
+        <button mat-flat-button color="accent" type="submit" (click)="handleSubscribe()" style="margin-left: 30px">
+            Subscribe ReplaySubject
+        </button>
+
+        <button mat-flat-button color="accent" type="submit" (click)="handleBehaviorSubscribe()"
+            style="margin-left: 30px">
+            Subscribe BehaviorSubject
+        </button>
+
+        <button mat-flat-button color="accent" type="submit" (click)="handleSubjectSubscribe()" style="margin-left: 30px">
+            Subscribe Subject
+        </button>
+    </div>
+</div>
+
+<div style="margin-top: 30px" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex="20">
+        <input type="text" pInputText [value]="concatValue" style="margin-right: 10px" />
+        <button pButton (click)="triggerConcat()">Concat</button>
+    </div>
+</div>
+
+<div style="margin-top: 30px" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex="20">
+        <button pButton (click)="triggerFrom()">from</button>
+    </div>
+</div>
+
+<div style="margin-top: 30px" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex="20">
+        <button pButton (click)="triggerSwitchMap()">Switch Map</button>
+    </div>
+</div>

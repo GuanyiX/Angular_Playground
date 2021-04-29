@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+    <form [formGroup]="paymentForm">
+        <mat-form-field appearance="outline">
+            <mat-label>bsb pipe</mat-label>
+            <input matInput type="text" formControlName="bsb" maxlength="7" bsb-format />
+        </mat-form-field>
+        <button mat-flat-button color="accent" [disabled]="paymentForm.invalid" (click)="onClick()">Submit</button>
+    </form>
+</div>
+
