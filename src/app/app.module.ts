@@ -35,7 +35,7 @@ import { HtmlComponent } from './components/html/html.component';
 
 // pipe
 import { BsbFormatPipe } from 'src/app/_shared/generalPipe';
-import { BsbFormatDirective } from 'src/app/components/html/html.component';
+import { BsbFormatDirective, BsbModelFormatDirective } from 'src/app/components/html/html.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { BsbFormatDirective } from 'src/app/components/html/html.component';
     UserComponent,
     HtmlComponent,
     BsbFormatPipe,
-    BsbFormatDirective
+    BsbFormatDirective,
+    BsbModelFormatDirective
   ],
   imports: [
     BrowserModule,
@@ -76,7 +77,8 @@ import { BsbFormatDirective } from 'src/app/components/html/html.component';
       multi: true,
     },
     BsbFormatPipe,
-    BsbFormatDirective
+    BsbFormatDirective,
+    BsbModelFormatDirective
   ],
   bootstrap: [AppComponent],
 })

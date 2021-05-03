@@ -1,10 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" fxFill>
+    {{ paymentForm.value | json }}
     <form [formGroup]="paymentForm">
         <mat-form-field appearance="outline">
-            <mat-label>bsb pipe</mat-label>
+            <mat-label>bsb form directive</mat-label>
             <input matInput type="text" formControlName="bsb" maxlength="7" bsb-format />
         </mat-form-field>
         <button mat-flat-button color="accent" [disabled]="paymentForm.invalid" (click)="onClick()">Submit</button>
     </form>
+    {{ bsbModel }}
+    <mat-form-field appearance="outline">
+        <mat-label>bsb model directive</mat-label>
+        <input matInput #test type="text" [(ngModel)]="bsbModel" bsb-model-format />
+    </mat-form-field>
 </div>
-
