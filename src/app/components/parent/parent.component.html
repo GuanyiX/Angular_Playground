@@ -1,0 +1,6 @@
+<p><b>Like:</b> {{ likedNumber }}</p>
+<p><b>Dislike:</b> {{ dislikedNumber }}</p>
+<button mat-flat-button color="primary" (click)="allowToCalculate()">Allow to calculate</button>
+<app-child [status]="allow" (countChanged)="onCounterChange($event)"></app-child>
+
+

@@ -1,0 +1,50 @@
+<!-- <nav>
+  <button mat-flat-button color="primary" (click)="toggle()">Toggle Open/Close</button>
+</nav>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
+
+<div class="sample-transition" (click)="handleColorChange()" [ngStyle]="{backgroundColor: divClicked ? 'red' : 'blue'}">
+  Sample Transition
+</div>
+
+<div style="width: 100%; text-align: center;">
+  <p></p>
+  <h3><b>CSS Transition</b></h3>
+  <img src="assets/golder-retriever-puppy.jpeg" [ngClass]="{'img-normal': !dogMoved, 'img-dynamic': dogMoved}" />
+</div> -->
+
+
+<!-- <div class="container">
+  
+  <img src="assets/cute-dog-headshot.jpeg" [ngClass]="{'showSlide':click_account==0,'hideSlide': click_account!=0}" />
+  <img src="assets/dog-3.jpeg" [ngClass]="{'showSlide':click_account==1,'hideSlide': click_account!=1}" />
+  <img src="assets/golder-retriever-puppy.jpeg"
+    [ngClass]="{'showSlide':click_account==2,'hideSlide': click_account!=2}" />
+
+  <div class="button-wrapper">
+    <button mat-button id="left-button" (click)="handleClick('left')">
+      <mat-icon class="material-icons-outlined">arrow_back_ios</mat-icon>
+    </button>
+    <button mat-button id="right-button" (click)="handleClick('right')">
+      <mat-icon class="material-icons-outlined">arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <img src="assets/cute-dog-headshot.jpeg" [ngClass]="{active: click_account===0}" />
+  <img src="assets/dog-3.jpeg" [ngClass]="{active: click_account===1}"  />
+  <img src="assets/golder-retriever-puppy.jpeg" [ngClass]="{active: click_account===2}"  />
+  <div class="button-wrapper">
+    <button mat-button id="left-button" (click)="handleClick('left')">
+      <mat-icon class="material-icons-outlined">arrow_back_ios</mat-icon>
+    </button>
+    <button mat-button id="right-button" (click)="handleClick('right')">
+      <mat-icon class="material-icons-outlined">arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+</div>

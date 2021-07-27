@@ -7,6 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenIntercepterService } from './_services/token-intercepter.service';
 
+// hot key library
+import { Hotkey, HotkeyModule } from 'angular2-hotkeys';
+
+// ng2char
+import { ChartsModule } from 'ng2-charts';
+
 // flex layout module
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -16,6 +22,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 // prime ng
 import { ButtonModule } from 'primeng/button';
@@ -35,7 +45,20 @@ import { HtmlComponent } from './components/html/html.component';
 
 // pipe
 import { BsbFormatPipe } from 'src/app/_shared/generalPipe';
-import { BsbFormatDirective, BsbModelFormatDirective } from 'src/app/components/html/html.component';
+import {
+  BsbFormatDirective,
+  BsbModelFormatDirective,
+} from 'src/app/components/html/html.component';
+import { WebsocketComponent } from './components/websocket/websocket.component';
+import { FormComponent } from './components/form/form.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { RegularExpressionComponent } from './components/regular-expression/regular-expression.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/child/child.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
+import { AnimationComponent } from './components/animation/animation.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { CarouselItemDirective } from './_directives/carousel-item.directive';
 
 @NgModule({
   declarations: [
@@ -48,13 +71,23 @@ import { BsbFormatDirective, BsbModelFormatDirective } from 'src/app/components/
     HtmlComponent,
     BsbFormatPipe,
     BsbFormatDirective,
-    BsbModelFormatDirective
+    BsbModelFormatDirective,
+    WebsocketComponent,
+    FormComponent,
+    RegularExpressionComponent,
+    ParentComponent,
+    ChildComponent,
+    CanvasComponent,
+    AnimationComponent,
+    CarouselComponent,
+    CarouselItemDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ChartsModule,
     MatButtonModule,
     MatTabsModule,
     MatFormFieldModule,
@@ -68,6 +101,12 @@ import { BsbFormatDirective, BsbModelFormatDirective } from 'src/app/components/
     InputTextModule,
     CardModule,
     HttpClientModule,
+    MatListModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    HotkeyModule.forRoot(),
   ],
   providers: [
     UnsavedGuard,
@@ -78,7 +117,7 @@ import { BsbFormatDirective, BsbModelFormatDirective } from 'src/app/components/
     },
     BsbFormatPipe,
     BsbFormatDirective,
-    BsbModelFormatDirective
+    BsbModelFormatDirective,
   ],
   bootstrap: [AppComponent],
 })

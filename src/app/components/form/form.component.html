@@ -1,0 +1,39 @@
+<div fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxFill>
+    {{ clientForm.value | json }}
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" #FormDirective="ngForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Firstname</mat-label>
+            <input matInput type="text" formControlName="firstname" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Lastname</mat-label>
+            <input matInput type="text" formControlName="lastname" />
+        </mat-form-field>
+        <button mat-flat-button color="primary">Submit</button>
+        <button mat-flat-button color="primary" (click)="resetForm(FormDirective)">Reset</button>
+    </form>
+    <div>
+        <form>
+            <mat-form-field appearance="outline">
+                <mat-label>Number</mat-label>
+                <input #inputValue type="text" placeholder="Pick one" aria-label="Number" matInput
+                    [formControl]="myControl" [matAutocomplete]="auto" (keyup)="showContent(inputValue.value)">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc" (optionSelected)="showOption($event.option.value)">
+                    <mat-option *ngFor="let option of filterOptions | async" [value]="option">
+                        {{ option.name }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>Test</mat-label>
+        <input matInput type="text" #test [ngModel]="testNumber" (ngModelChange)="onChange(test.value)" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+</div>

@@ -1,0 +1,68 @@
+
+@mixin dot-general {
+  width: 10px;
+  height: 10px;
+  border-color: black;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.carousel-wrapper {
+  margin: 50px auto;
+  overflow: hidden;
+  width: 1000px;
+  height: 50vh;
+  position: relative;
+
+  .carousel-inner {
+    display: flex;
+  }
+
+  .carousel-inner {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+    img {
+      width: 1000px;
+    }
+  }
+
+  .button-wrapper {
+    width: 100%;
+    position: absolute;
+    top: 20vh;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+    }
+  }
+
+  .dot-wrapper {
+    position: absolute;
+    bottom: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+
+
+    .dot-item {
+      @include dot-general()
+    }
+
+    .dot-active-item {
+      @include dot-general();
+      background-color: lightblue;
+    }
+  }
+}
+
+
+

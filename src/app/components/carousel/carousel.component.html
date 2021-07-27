@@ -1,0 +1,19 @@
+<section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+  <ul class="carousel-inner" #carousel>
+    <li #carouselItem *ngFor="let item of linkList">
+      <img [src]="item" />
+    </li>
+  </ul>
+  <div class="button-wrapper">
+    <button mat-button (click)="next()">
+      <mat-icon class="material-icons-outlined">arrow_back_ios</mat-icon>
+    </button>
+    <button mat-button (click)="prev()">
+      <mat-icon class="material-icons-outlined">arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+  <ul class="dot-wrapper">
+    <li [ngClass]="{'dot-item': i !== currentSlide, 'dot-active-item': i === currentSlide}"
+      *ngFor="let item of linkList; let i = index"></li>
+  </ul>
+</section>
