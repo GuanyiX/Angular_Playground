@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { GlobalService } from './_services/global.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'playground';
@@ -19,60 +19,32 @@ export class AppComponent {
   constructor(private router: Router, private globalService: GlobalService) {}
 
   ngOnInit() {
-    this.globalService.currentMode.subscribe(value => {
-      this.mode = value
-    })
-
-    this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd) {
-        this.login = (event.url === '/login') ? true : false;
-        this.path = event.url;
-
-        this.items = [
-          {
-            label: 'Home',
-            routerLink: '/home',
-            styleClass: this.path === '/home' ? 'menucus' : '',
-          },
-          {
-            label: 'FrontEnd',
-            icon: 'pi pi-desktop',
-            items: [
-              { label: 'rxjs', routerLink: '/rxjs' },
-              { label: 'ngrx' },
-              { label: 'Angular Animation' },
-              { label: 'fxLayout', routerLink: '/fxLayout' },
-              { label: 'HTML', routerLink: '/html'}
-            ],
-            styleClass: (this.path === '/rxjs' || this.path ==='/fxLayout') ? 'menucus' : '',
-          },
-          {
-            label: 'BackEnd',
-            icon: 'pi pi-compass',
-            items: [{ label: 'Nestjs' }],
-          },
-          {
-            label: 'Database',
-            icon: 'pi pi-book',
-            items: [{ label: 'MongoDB' }, { label: 'MySQL' }],
-          },
-          {
-            label: 'AWS',
-            icon: 'pi pi-amazon',
-            items: [{ label: 'EC2' }, { label: 'ECR' }],
-          },
-          {
-            label: 'User',
-            routerLink: '/user'
-          }
-        ];
-      }
-    });
+    this.checkUserStatus()
   }
 
-  handleLogOutClick() {
-    this.globalService.updateCurrentMode(0);
-    localStorage.removeItem('token')
-    this.router.navigate(['/login']);
+  checkUserStatus() {
+    const userInfo = localStorage.getItem('userInfo');
+    if(userInfo) {
+      this.login = true;
+    }
   }
+
+  clearLocalStorage() {
+    this.login = false;
+    localStorage.clear();
+  }
+
+  onMenuClick(element: any) {
+    if(element.target.name === 'carousel') {
+      this.router.navigateByUrl('/widget/carousel')
+    }
+    else if(element.target.name === 'logout') {
+      this.router.navigateByUrl('/login');
+      this.clearLocalStorage();
+    }
+    else {
+      this.router.navigateByUrl('/home');
+    }
+  }
+
 }

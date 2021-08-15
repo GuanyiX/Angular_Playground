@@ -13,6 +13,10 @@ import { Hotkey, HotkeyModule } from 'angular2-hotkeys';
 // ng2char
 import { ChartsModule } from 'ng2-charts';
 
+// ngx-mask
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
+
 // flex layout module
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -26,6 +30,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 // prime ng
 import { ButtonModule } from 'primeng/button';
@@ -59,6 +65,11 @@ import { CanvasComponent } from './components/canvas/canvas.component';
 import { AnimationComponent } from './components/animation/animation.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarouselItemDirective } from './_directives/carousel-item.directive';
+import { FormatKingComponent } from './components/format-king/format-king.component';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -81,6 +92,7 @@ import { CarouselItemDirective } from './_directives/carousel-item.directive';
     AnimationComponent,
     CarouselComponent,
     CarouselItemDirective,
+    FormatKingComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,8 +117,12 @@ import { CarouselItemDirective } from './_directives/carousel-item.directive';
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatMenuModule,
+    MatToolbarModule,
+    NgxCurrencyModule,
     MatIconModule,
     HotkeyModule.forRoot(),
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [
     UnsavedGuard,

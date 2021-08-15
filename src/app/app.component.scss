@@ -1,17 +1,54 @@
-::ng-deep .ui-menu,.ui-menu .ui-menu-child{
-    border: 0px;
-    background:#5393bc 0 0 repeat-x !important;
+mat-toolbar {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+
+  button {
+    background-color: transparent;
+  }
+
+  .menu-item {
+    color: red !important;
+  }
+
+  .left-menu {
+    display: flex;
+    justify-content: start center;
+    gap: 20px;
+
+    mat-icon {
+      margin-right: 5px;
+    }
+  }
+
+  .right-menu {
+    transform: scale(1.2);
+    display: flex;
+    align-items: center;
+
+    .user-icon {
+      cursor: pointer;
+    }
+  }
 }
-::ng-deep .ui-menu .ui-menuitem .ui-menuitem-link:hover{
-    background-color: #5393bc;
+
+::ng-deep .mat-menu-panel {
+  min-height: 0px !important;
+
+  .mat-menu-content{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    min-height: none !important;
+  
+    button {
+      font-weight: 600;
+
+      mat-icon {
+        margin-right: 5px;
+      }
+    }
+  }
 }
-::ng-deep .ui-menu .ui-menuitem .ui-state-active{
-    background-color: #5393bc;
-}
-::ng-deep .ui-menu .ui-menuitem.ui-menuitem-active>.ui-menuitem-link,
-.ui-menu .ui-menuitem .ui-menuitem-link:hover{
-    background-color:#186ba0;
-}
-::ng-deep .menucus{
-    background: #5393bc !important;
-}
+

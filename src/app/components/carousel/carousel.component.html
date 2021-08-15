@@ -13,7 +13,7 @@
     </button>
   </div>
   <ul class="dot-wrapper">
-    <li [ngClass]="{'dot-item': i !== currentSlide, 'dot-active-item': i === currentSlide}"
+    <li [ngClass]="{'dot-item': i !== currentDot, 'dot-active-item': i === currentDot}"
       *ngFor="let item of linkList; let i = index"></li>
   </ul>
 </section>

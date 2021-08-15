@@ -13,6 +13,8 @@ import { ParentComponent } from '../app/components/parent/parent.component';
 import { CanvasComponent } from '../app/components/canvas/canvas.component';
 import { AnimationComponent } from '../app/components/animation/animation.component';
 import { CarouselComponent } from '../app/components/carousel/carousel.component';
+import { FormatKingComponent } from '../app/components/format-king/format-king.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +29,8 @@ const routes: Routes = [
   { path: 'parent', component: ParentComponent },
   { path: 'canvas', component: CanvasComponent },
   { path: 'animation', component: AnimationComponent },
-  { path: 'carousel', component: CarouselComponent },
+  { path: 'widget/carousel', component: CarouselComponent },
+  { path: 'format-king', component: FormatKingComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home'}
 ];

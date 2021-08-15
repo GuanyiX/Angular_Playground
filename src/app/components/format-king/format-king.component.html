@@ -1,0 +1,11 @@
+<div class="field-wrapper">
+  <mat-form-field appearance="outline">
+    <mat-label>Sample Mask</mat-label>
+    <input matInput type="text" mask="separator.2" thousandSeparator="," />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sample Mask</mat-label>
+    <input matInput #mask type="text" currencyMask [(ngModel)]="maskContent" (focus)="mask.select()" />
+  </mat-form-field>
+</div>

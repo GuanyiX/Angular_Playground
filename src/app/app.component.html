@@ -1,5 +1,48 @@
-<p-menubar [model]="items" *ngIf="mode === 1">
-    <button pButton label="Logout" icon="pi pi-power-off" (click)="handleLogOutClick()"></button>
-</p-menubar>
+<mat-toolbar *ngIf="login">
+  <div class="left-menu">
+    <button mat-flat-button [matMenuTriggerFor]="styleMenu">
+      <mat-icon aria-hidden="false" class="material-icons-outlined">style</mat-icon>Style
+    </button>
+    <mat-menu #styleMenu="matMenu">
+      <button mat-menu-item>Animation</button>
+      <button mat-menu-item>fxLayout</button>
+    </mat-menu>
+    <button mat-flat-button [matMenuTriggerFor]="dataMenu">
+      <mat-icon aria-hidden="false" class="material-icons-outlined">analytics</mat-icon>Data
+    </button>
+    <mat-menu #dataMenu="matMenu">
+      <button mat-menu-item>rxjs</button>
+      <button mat-menu-item>Ngrx</button>
+    </mat-menu>
+    <button mat-flat-button [matMenuTriggerFor]="comMenu">
+      <mat-icon aria-hidden="false" class="material-icons-outlined">textsms</mat-icon>Communication
+    </button>
+    <mat-menu #comMenu="matMenu">
+      <button mat-menu-item>Socket.io</button>
+    </mat-menu>
+    <button mat-flat-button [matMenuTriggerFor]="widgetMenu">
+      <mat-icon aria-hidden="false" class="material-icons-outlined">widgets</mat-icon>Widget
+    </button>
+    <mat-menu #widgetMenu="matMenu">
+      <button mat-menu-item name="carousel" (click)="onMenuClick($event)">Carousel</button>
+    </mat-menu>
+  </div>
+  <div class="right-menu">
+    <mat-icon aria-hidden="false" class="material-icons-outlined user-icon" [matMenuTriggerFor]="accountMenu">
+      account_circle
+    </mat-icon>
+    <mat-menu #accountMenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon aria-hidden="false" class="material-icons-outlined">settings</mat-icon>Settings
+      </button>
+      <button mat-menu-item>
+        <mat-icon aria-hidden="false" class="material-icons-outlined">manage_accounts</mat-icon>User Management
+      </button>
+      <button mat-menu-item name="logout" (click)="onMenuClick($event)">  
+        <mat-icon aria-hidden="false" class="material-icons-outlined">logout</mat-icon>Log Out
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
