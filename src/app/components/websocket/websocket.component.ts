@@ -13,7 +13,7 @@ export class WebsocketComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.socketService.setupConnection()
+    // this.socketService.setupConnection()
   }
 
   handleClick() {

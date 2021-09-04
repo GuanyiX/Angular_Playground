@@ -1,30 +1,32 @@
 <mat-toolbar *ngIf="login">
   <div class="left-menu">
-    <button mat-flat-button [matMenuTriggerFor]="styleMenu">
+    <img src="../assets/logo.png" />
+    <button mat-flat-button [matMenuTriggerFor]="styleMenu" [ngClass]="{'selectedMenu': selectedMenu === 'style'}">
       <mat-icon aria-hidden="false" class="material-icons-outlined">style</mat-icon>Style
     </button>
     <mat-menu #styleMenu="matMenu">
-      <button mat-menu-item>Animation</button>
-      <button mat-menu-item>fxLayout</button>
+      <button mat-menu-item name="animation" (click)="onMenuClick($event)">Animation</button>
+      <button mat-menu-item name="fxLayout" (click)="onMenuClick($event)">fxLayout</button>
     </mat-menu>
-    <button mat-flat-button [matMenuTriggerFor]="dataMenu">
+    <button mat-flat-button [matMenuTriggerFor]="dataMenu" [ngClass]="{'selectedMenu': selectedMenu === 'data'}">
       <mat-icon aria-hidden="false" class="material-icons-outlined">analytics</mat-icon>Data
     </button>
     <mat-menu #dataMenu="matMenu">
-      <button mat-menu-item>rxjs</button>
-      <button mat-menu-item>Ngrx</button>
+      <button mat-menu-item name="rxjs" (click)="onMenuClick($event)">rxjs</button>
+      <button mat-menu-item name="ngrx" (click)="onMenuClick($event)">Ngrx</button>
     </mat-menu>
-    <button mat-flat-button [matMenuTriggerFor]="comMenu">
+    <button mat-flat-button [matMenuTriggerFor]="comMenu" [ngClass]="{'selectedMenu': selectedMenu === 'communication'}">
       <mat-icon aria-hidden="false" class="material-icons-outlined">textsms</mat-icon>Communication
     </button>
     <mat-menu #comMenu="matMenu">
-      <button mat-menu-item>Socket.io</button>
+      <button mat-menu-item name="socket" (click)="onMenuClick($event)">Socket.io</button>
     </mat-menu>
-    <button mat-flat-button [matMenuTriggerFor]="widgetMenu">
+    <button mat-flat-button [matMenuTriggerFor]="widgetMenu" [ngClass]="{'selectedMenu': selectedMenu === 'widgets'}">
       <mat-icon aria-hidden="false" class="material-icons-outlined">widgets</mat-icon>Widget
     </button>
     <mat-menu #widgetMenu="matMenu">
       <button mat-menu-item name="carousel" (click)="onMenuClick($event)">Carousel</button>
+      <button mat-menu-item name="scroll-bar" (click)="onMenuClick($event)">Scroll Bar</button>
     </mat-menu>
   </div>
   <div class="right-menu">
@@ -32,17 +34,17 @@
       account_circle
     </mat-icon>
     <mat-menu #accountMenu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onMenuClick($event)">
         <mat-icon aria-hidden="false" class="material-icons-outlined">settings</mat-icon>Settings
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onMenuClick($event)">
         <mat-icon aria-hidden="false" class="material-icons-outlined">manage_accounts</mat-icon>User Management
       </button>
-      <button mat-menu-item name="logout" (click)="onMenuClick($event)">  
+      <button mat-menu-item name="logout" (click)="onMenuClick($event)">
         <mat-icon aria-hidden="false" class="material-icons-outlined">logout</mat-icon>Log Out
       </button>
     </mat-menu>
   </div>
 </mat-toolbar>
-
+<app-progress-bar *ngIf="loading"></app-progress-bar>
 <router-outlet></router-outlet>

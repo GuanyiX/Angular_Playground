@@ -1,0 +1,26 @@
+<mat-drawer-container class="example-container" autosize style="height: 100vh">
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item (click)="toggleState()">
+        <mat-icon matListIcon>reorder</mat-icon>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>home</mat-icon>
+        <span [@menuAnimation]="state">Home</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>person</mat-icon>
+        <span [@menuAnimation]="state">Athlets</span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>group</mat-icon>
+        <span [@menuAnimation]="state">Teams & Partnerships</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    Class
+  </div>
+
+</mat-drawer-container>

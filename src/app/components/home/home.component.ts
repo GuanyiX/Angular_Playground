@@ -9,16 +9,10 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  // click_count = 0;
-  // pages_number = 2;
   constructor() {}
 
-  ngOnInit() {}
-
-  // @HostListener('window:beforeunload', ['$event'])
-  // beforeUnloadHandler() {
-  //   return false;
-  // }
+  ngOnInit() {
+  }
 
   canExit(): boolean {
     if (confirm('Do you wish to Please confirm')) {
@@ -27,14 +21,4 @@ export class HomeComponent implements OnInit {
       return false;
     }
   }
-
-  // handleClickNext() {
-  //   this.click_count = Math.abs((this.click_count + 1) % this.pages_number);
-  //   console.log(this.click_count);
-  // }
-
-  // handleClickPrev() {
-  //   this.click_count = Math.abs((this.click_count - 1) % this.pages_number);
-  //   console.log(this.click_count);
-  // }
 }

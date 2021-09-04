@@ -5,8 +5,18 @@ mat-toolbar {
   align-items: center;
   height: 50px;
 
+  img {
+    margin: 10px;
+    height: 40px;
+    width: auto;
+  }
+
   button {
     background-color: transparent;
+  }
+
+  .selectedMenu {
+    color: skyblue;
   }
 
   .menu-item {

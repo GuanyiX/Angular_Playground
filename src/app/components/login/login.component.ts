@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormControl,
   FormGroup,
   FormBuilder,
   Validators,
@@ -16,6 +15,7 @@ import { GlobalService } from 'src/app/_services/global.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  login: boolean = false;
 
   constructor(
     private router: Router,
@@ -25,26 +25,27 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.checkStatus();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
+  checkStatus() {
+    if(localStorage.getItem('userInfo')) {
+      this.login = true;
+      this.router.navigate(['/home']);
+    } else {
+      this.login = false;
+    }
+  }
+
   handleHomeClick() {
     if (this.loginForm.valid) {
-      this.authService
-        .login(
-          this.loginForm.get('email')?.value,
-          this.loginForm.get('password')?.value
-        )
-        .subscribe((res: any) => {
-          if(res.success) {
-            localStorage.setItem('token', res.data.token);
-            this.router.navigate(['/home']);
-            this.globalService.updateCurrentMode(1);
-          } 
-        });
+      this.globalService.updateLoginStatus(true);
+      localStorage.setItem('userInfo', JSON.stringify(this.loginForm.getRawValue));
+      this.router.navigate(['/home']);
     }
   }
 }

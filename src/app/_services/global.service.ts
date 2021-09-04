@@ -5,17 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-
-  private currentModeSource = new BehaviorSubject<Number>(0);
-  currentMode = this.currentModeSource.asObservable()
+  public login: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false);
 
   constructor() { }
 
-  public get getCurrentMode(): Number{
-    return this.currentModeSource.value;
-  }
-
-  updateCurrentMode(status: Number) {
-    this.currentModeSource.next(status)
+  public updateLoginStatus(isLoggedIn: boolean): void {
+    this.login.next(isLoggedIn);
   }
 }

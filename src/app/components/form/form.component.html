@@ -31,8 +31,8 @@
         <input matInput type="text" #test [ngModel]="testNumber" (ngModelChange)="onChange(test.value)" />
     </mat-form-field>
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
     </mat-form-field>
 </div>

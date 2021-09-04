@@ -32,6 +32,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // prime ng
 import { ButtonModule } from 'primeng/button';
@@ -66,6 +68,13 @@ import { AnimationComponent } from './components/animation/animation.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarouselItemDirective } from './_directives/carousel-item.directive';
 import { FormatKingComponent } from './components/format-king/format-king.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { NgrxComponent } from './pages/ngrx/ngrx.component';
+
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { _counterReducer } from './_stores/reducers/counter.reducer';
+import { ScrollBarComponent } from './pages/scroll-bar/scroll-bar.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -93,6 +102,9 @@ const maskConfig: Partial<IConfig> = {
     CarouselComponent,
     CarouselItemDirective,
     FormatKingComponent,
+    ProgressBarComponent,
+    NgrxComponent,
+    ScrollBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +115,7 @@ const maskConfig: Partial<IConfig> = {
     MatButtonModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatSidenavModule,
     FormsModule,
     MatInputModule,
     ButtonModule,
@@ -116,6 +129,7 @@ const maskConfig: Partial<IConfig> = {
     MatListModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatNativeDateModule,
     MatMenuModule,
     MatToolbarModule,
@@ -123,6 +137,11 @@ const maskConfig: Partial<IConfig> = {
     MatIconModule,
     HotkeyModule.forRoot(),
     NgxMaskModule.forRoot(maskConfig),
+    StoreModule.forRoot({ count: _counterReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
+      autoPause: false,
+    }),
   ],
   providers: [
     UnsavedGuard,

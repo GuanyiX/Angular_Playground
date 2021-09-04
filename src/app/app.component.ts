@@ -1,32 +1,44 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
 import { GlobalService } from './_services/global.service';
+
+enum Menu {
+  STYLE = 'style',
+  DATA = 'data',
+  COMMUNICATION = 'communication',
+  WIDGET = 'widgets',
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'playground';
+  title = 'Angular Playground';
   login: boolean = false;
-  path: string = '';
-  items: MenuItem[] = [];
-
-  mode: Number = 0;
+  selectedMenu: string = Menu.STYLE;
+  loading: boolean = false;
 
   constructor(private router: Router, private globalService: GlobalService) {}
 
   ngOnInit() {
-    this.checkUserStatus()
+    this.selectedMenu = '';
+    this.checkUserStatus();
   }
 
   checkUserStatus() {
-    const userInfo = localStorage.getItem('userInfo');
-    if(userInfo) {
-      this.login = true;
-    }
+    this.globalService.login.subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.login = true;
+      } else {
+        if (localStorage.getItem('userInfo')) {
+          this.login = true;
+        } else {
+          this.login = false;
+        }
+      }
+    });
   }
 
   clearLocalStorage() {
@@ -34,17 +46,68 @@ export class AppComponent {
     localStorage.clear();
   }
 
-  onMenuClick(element: any) {
-    if(element.target.name === 'carousel') {
-      this.router.navigateByUrl('/widget/carousel')
-    }
-    else if(element.target.name === 'logout') {
-      this.router.navigateByUrl('/login');
-      this.clearLocalStorage();
-    }
-    else {
-      this.router.navigateByUrl('/home');
-    }
+  loadData(urlPath: string) {
+    setTimeout(() => {
+      this.router.navigateByUrl(urlPath);
+      this.loading = false;
+    }, 1000);
   }
 
+  onMenuClick(element: any) {
+    this.loading = true;
+
+    switch (element.target.name) {
+      case 'animation': {
+        this.selectedMenu = Menu.STYLE;
+        this.loadData('/animation');
+        break;
+      }
+      case 'fxLayout': {
+        this.selectedMenu = Menu.STYLE;
+        this.loadData('/fxLayout');
+        break;
+      }
+      case 'rxjs': {
+        this.selectedMenu = Menu.DATA;
+        this.router.navigateByUrl('/rxjs');
+        this.loadData('/rxjs');
+        break;
+      }
+      case 'ngrx': {
+        this.selectedMenu = Menu.DATA;
+        this.router.navigateByUrl('/ngrx');
+        this.loadData('/ngrx');
+        break;
+      }
+      case 'socket': {
+        this.selectedMenu = Menu.COMMUNICATION;
+        this.router.navigateByUrl('/websocket');
+        this.loadData('/websocket');
+        break;
+      }
+      case 'carousel': {
+        this.selectedMenu = Menu.WIDGET;
+        this.router.navigateByUrl('/widget/carousel');
+        this.loadData('/widget/carousel');
+        break;
+      }
+      case 'scroll-bar': {
+        this.selectedMenu = Menu.WIDGET;
+        this.loadData('/widget/scroll-bar');
+        break;
+      }
+      case 'logout': {
+        this.selectedMenu = Menu.WIDGET;
+        this.clearLocalStorage();
+        this.router.navigateByUrl('/login');
+        this.loadData('/login');
+        break;
+      }
+      default: {
+        this.selectedMenu = Menu.STYLE;
+        this.router.navigateByUrl('/home');
+        this.loadData('/home');
+      }
+    }
+  }
 }

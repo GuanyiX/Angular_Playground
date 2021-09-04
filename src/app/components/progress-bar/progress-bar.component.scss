@@ -1,0 +1,21 @@
+.progress-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
+  img {
+    width: 80px;
+    height: auto;
+  }
+
+  .rotate {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

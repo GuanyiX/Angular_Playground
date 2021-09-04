@@ -15,11 +15,16 @@ import { AnimationComponent } from '../app/components/animation/animation.compon
 import { CarouselComponent } from '../app/components/carousel/carousel.component';
 import { FormatKingComponent } from '../app/components/format-king/format-king.component';
 
+// pages
+import { NgrxComponent } from '../app/pages/ngrx/ngrx.component';
+import { ScrollBarComponent } from '../app/pages/scroll-bar/scroll-bar.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'rxjs', component: RxjsComponent },
+  { path: 'ngrx', component: NgrxComponent },
   { path: 'fxLayout', component: FxLayoutComponent },
   { path: 'user', component: UserComponent },
   { path: 'html', component: HtmlComponent },
@@ -30,8 +35,9 @@ const routes: Routes = [
   { path: 'canvas', component: CanvasComponent },
   { path: 'animation', component: AnimationComponent },
   { path: 'widget/carousel', component: CarouselComponent },
+  { path: 'widget/scroll-bar', component: ScrollBarComponent },
   { path: 'format-king', component: FormatKingComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home'}
 ];
 
