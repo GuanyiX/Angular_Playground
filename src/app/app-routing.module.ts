@@ -18,6 +18,7 @@ import { FormatKingComponent } from '../app/components/format-king/format-king.c
 // pages
 import { NgrxComponent } from '../app/pages/ngrx/ngrx.component';
 import { ScrollBarComponent } from '../app/pages/scroll-bar/scroll-bar.component';
+import { AgGridComponent } from '../app/pages/ag-grid/ag-grid.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'animation', component: AnimationComponent },
   { path: 'widget/carousel', component: CarouselComponent },
   { path: 'widget/scroll-bar', component: ScrollBarComponent },
+  { path: 'widget/ag-grid', component: AgGridComponent },
   { path: 'format-king', component: FormatKingComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: 'home'}

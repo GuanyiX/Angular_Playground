@@ -96,6 +96,11 @@ export class AppComponent {
         this.loadData('/widget/scroll-bar');
         break;
       }
+      case 'ag-grid': {
+        this.selectedMenu = Menu.WIDGET;
+        this.loadData('/widget/ag-grid');
+        break;
+      }
       case 'logout': {
         this.selectedMenu = Menu.WIDGET;
         this.clearLocalStorage();

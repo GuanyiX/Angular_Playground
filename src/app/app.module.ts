@@ -51,6 +51,9 @@ import { FxLayoutComponent } from './components/fx-layout/fx-layout.component';
 import { UserComponent } from './components/user/user.component';
 import { HtmlComponent } from './components/html/html.component';
 
+// ag grid
+import { AgGridModule } from 'ag-grid-angular';
+
 // pipe
 import { BsbFormatPipe } from 'src/app/_shared/generalPipe';
 import {
@@ -75,6 +78,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { _counterReducer } from './_stores/reducers/counter.reducer';
 import { ScrollBarComponent } from './pages/scroll-bar/scroll-bar.component';
+import { AgGridComponent } from './pages/ag-grid/ag-grid.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -105,6 +109,7 @@ const maskConfig: Partial<IConfig> = {
     ProgressBarComponent,
     NgrxComponent,
     ScrollBarComponent,
+    AgGridComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,6 +140,7 @@ const maskConfig: Partial<IConfig> = {
     MatToolbarModule,
     NgxCurrencyModule,
     MatIconModule,
+    AgGridModule.withComponents([]),
     HotkeyModule.forRoot(),
     NgxMaskModule.forRoot(maskConfig),
     StoreModule.forRoot({ count: _counterReducer }),
