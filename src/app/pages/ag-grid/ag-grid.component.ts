@@ -10,7 +10,6 @@ export class AgGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('test')
   }
 
 }
